@@ -8,76 +8,78 @@
 <style>
 
 body{
-font-family:Arial;
+font-family: Arial;
 background:#f3f3f3;
 margin:0;
 text-align:center;
 }
 
 header{
-background:#ffcc00;
+background:#ffc400;
 padding:20px;
 font-size:28px;
 font-weight:bold;
 }
 
+h2{
+margin-top:30px;
+}
+
 .container{
 display:flex;
-flex-wrap:wrap;
 justify-content:center;
-padding:20px;
+gap:30px;
+flex-wrap:wrap;
+margin-top:30px;
 }
 
-.card{
+.produto{
 background:white;
-width:240px;
-margin:15px;
-padding:15px;
-border-radius:12px;
-box-shadow:0 6px 15px rgba(0,0,0,0.2);
-transition:0.3s;
+padding:20px;
+border-radius:10px;
+width:260px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
-.card:hover{
-transform:scale(1.05);
-}
-
-.card img{
-width:100%;
-height:180px;
-object-fit:contain;
-}
-
-.oferta{
+.tag{
 background:red;
 color:white;
-padding:4px 10px;
-border-radius:6px;
+padding:5px 10px;
+border-radius:5px;
 font-size:12px;
 display:inline-block;
 margin-bottom:10px;
 }
 
+.produto img{
+width:100%;
+border-radius:8px;
+}
+
+.produto h3{
+font-size:18px;
+margin:10px 0;
+}
+
 .preco{
-color:#00a650;
+color:#0a9a48;
 font-size:22px;
 font-weight:bold;
-margin-bottom:10px;
 }
 
-button{
-background:#00a650;
+.botao{
+background:#16a34a;
 color:white;
 border:none;
-padding:12px;
-border-radius:8px;
+padding:12px 18px;
+border-radius:6px;
 cursor:pointer;
-width:100%;
-font-weight:bold;
+font-size:16px;
+margin-top:10px;
 }
 
-button:hover{
-background:#008f44;
+.botao:hover{
+background:#0d7a34;
 }
 
 </style>
@@ -92,51 +94,25 @@ background:#008f44;
 
 <h2>🔥 Ofertas do Dia</h2>
 
-<div class="container" id="produtos"></div>
+<div class="container">
 
-<script>
+<div class="produto">
 
-const produtos = [
+<span class="tag">OFERTA DO DIA</span>
 
-{
-nome:"Celular Samsung Galaxy A07 128GB 4GB RAM",
-preco:"599",
-foto:"https://http2.mlstatic.com/D_NQ_NP_2X_845912-MLA72645632120_112023-F.webp",
-link:"https://meli.la/13DE3qb"
-}
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_972233-MLA72587523210_112023-F.jpg">
 
-];
+<h3>Celular Samsung Galaxy A07 128GB 4GB RAM</h3>
 
-const container = document.getElementById("produtos");
+<p class="preco">R$ 599</p>
 
-produtos.forEach(produto => {
-
-container.innerHTML += `
-
-<div class="card">
-
-<div class="oferta">OFERTA DO DIA</div>
-
-<img src="${produto.foto}">
-
-<h3>${produto.nome}</h3>
-
-<div class="preco">R$ ${produto.preco}</div>
-
-<a href="${produto.link}" target="_blank">
-
-<button>🛒 Comprar no Mercado Livre</button>
-
+<a href="https://meli.la/13DE3qb" target="_blank">
+<button class="botao">🛒 Comprar no Mercado Livre</button>
 </a>
 
 </div>
 
-`;
-
-});
-
-</script>
+</div>
 
 </body>
-
 </html>
