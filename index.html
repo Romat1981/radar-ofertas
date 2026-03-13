@@ -8,7 +8,7 @@
 
 <title>Radar de Ofertas | Promoções Mercado Livre</title>
 
-<meta name="description" content="Radar de ofertas com promoções do Mercado Livre. Celulares, TVs, games, casa e beleza com descontos atualizados todos os dias.">
+<meta name="description" content="Radar de ofertas com promoções do Mercado Livre. Celulares, TVs, games, casa, beleza e suplementos com descontos atualizados.">
 
 <style>
 
@@ -73,7 +73,7 @@ padding:20px;
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+grid-template-columns:repeat(6,1fr);
 gap:20px;
 }
 
@@ -94,7 +94,7 @@ border-radius:8px;
 .nome{
 font-size:14px;
 margin:10px 0;
-min-height:40px;
+min-height:50px;
 }
 
 .preco{
@@ -139,11 +139,85 @@ padding:40px;
 color:#666;
 }
 
+@media(max-width:1200px){
+.grid{
+grid-template-columns:repeat(4,1fr);
+}
+}
+
+@media(max-width:800px){
+.grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
 </style>
+
+<script>
+
+function buscarProduto(){
+
+let input=document.getElementById("busca").value.toLowerCase()
+let cards=document.getElementsByClassName("card")
+
+for(let i=0;i<cards.length;i++){
+
+let nome=cards[i].innerText.toLowerCase()
+
+if(nome.includes(input)){
+cards[i].style.display="block"
+}else{
+cards[i].style.display="none"
+}
+
+}
+
+}
+
+function filtrar(cat){
+
+let cards=document.getElementsByClassName("card")
+
+for(let i=0;i<cards.length;i++){
+
+if(cat=="todos"){
+cards[i].style.display="block"
+}else{
+
+if(cards[i].classList.contains(cat)){
+cards[i].style.display="block"
+}else{
+cards[i].style.display="none"
+}
+
+}
+
+}
+
+}
+
+function contador(){
+
+let tempo=3600
+
+setInterval(function(){
+
+tempo--
+
+let minutos=Math.floor(tempo/60)
+let segundos=tempo%60
+
+document.getElementById("timer").innerHTML=minutos+"m "+segundos+"s"
+
+},1000)
+
+}
+
+</script>
 
 </head>
 
-<body>
+<body onload="contador()">
 
 <header>
 📡 RADAR DE OFERTAS
@@ -165,142 +239,146 @@ color:#666;
 </div>
 
 <div class="busca">
-
-<input id="busca" onkeyup="buscar()" placeholder="Buscar produtos...">
-
+<input id="busca" onkeyup="buscarProduto()" placeholder="Buscar produtos...">
 </div>
 
 <div class="container">
 
 <div class="relampago">
-⚡ OFERTA RELÂMPAGO
+⚡ OFERTA RELÂMPAGO termina em <span id="timer"></span>
 </div>
 
-<div class="grid" id="produtos"></div>
+<div class="grid">
+
+<!-- ELETRONICOS -->
+
+<div class="card eletronicos">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_896507-MLA96123118445_102025-F.webp">
+<div class="nome">iPhone 14 Pro Max</div>
+<div class="preco">R$ 5.339</div>
+<a class="botao" href="https://meli.la/2a6ue9k" target="_blank">Comprar</a>
+</div>
+
+<div class="card eletronicos">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_959706-MLA99950013507_112025-F.webp">
+<div class="nome">Smart TV Samsung 32</div>
+<div class="preco">R$ 949</div>
+<a class="botao" href="https://meli.la/1YM957K">Comprar</a>
+</div>
+
+<div class="card eletronicos">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_648316-MLA99473453820_112025-F.webp">
+<div class="nome">Smart TV AOC 50 4K</div>
+<div class="preco">R$ 2.193</div>
+<a class="botao" href="https://meli.la/2HLz2ko">Comprar</a>
+</div>
+
+<div class="card eletronicos">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_936543-MLA99989050845_112025-F.webp">
+<div class="nome">Sound Bar JBL Cinema</div>
+<div class="preco">R$ 925</div>
+<a class="botao" href="https://meli.la/31uqXbU">Comprar</a>
+</div>
+
+<div class="card eletronicos">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_609505-MLA105673814081_012026-F.webp">
+<div class="nome">Carregador Turbo iPhone</div>
+<div class="preco">R$ 43,55</div>
+<a class="botao" href="https://meli.la/2HUZgxD">Comprar</a>
+</div>
+
+<!-- GAMES -->
+
+<div class="card games">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_945456-MLA99456386724_112025-F.webp">
+<div class="nome">Playstation 5 Slim</div>
+<div class="preco">R$ 3.822</div>
+<a class="botao" href="https://meli.la/2FcoRG5">Comprar</a>
+</div>
+
+<div class="card games">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_730363-MLA99890032125_112025-F.webp">
+<div class="nome">Volante Logitech G29</div>
+<div class="preco">R$ 1.799</div>
+<a class="botao" href="https://meli.la/1yxcfGM">Comprar</a>
+</div>
+
+<!-- CASA -->
+
+<div class="card casa">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_775407-MLA99776749612_122025-F.webp">
+<div class="nome">Air Fryer Mondial</div>
+<div class="preco">R$ 269</div>
+<a class="botao" href="https://meli.la/19LrGhn">Comprar</a>
+</div>
+
+<div class="card casa">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_661078-MLA99491593886_112025-F.webp">
+<div class="nome">Panela Pressão Elétrica Electrolux</div>
+<div class="preco">R$ 545</div>
+<a class="botao" href="https://meli.la/2UVoyHn">Comprar</a>
+</div>
+
+<div class="card casa">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_988510-MLA99501045164_112025-F.webp">
+<div class="nome">Mangueira Jardim 30m</div>
+<div class="preco">R$ 46,90</div>
+<a class="botao" href="https://meli.la/2NnapD8">Comprar</a>
+</div>
+
+<div class="card casa">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_661398-MLA83775380474_042025-F.webp">
+<div class="nome">Chuveiro Lorenzetti Acqua Ultra</div>
+<div class="preco">R$ 505</div>
+<a class="botao" href="https://meli.la/26DdA1c">Comprar</a>
+</div>
+
+<!-- BELEZA -->
+
+<div class="card beleza">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_847667-MLA97122485144_112025-F.webp">
+<div class="nome">Body Splash Masculino</div>
+<div class="preco">R$ 86,90</div>
+<a class="botao" href="https://meli.la/2Yr5NNa">Comprar</a>
+</div>
+
+<div class="card beleza">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_653286-MLA88348742037_072025-F.webp">
+<div class="nome">Cicaplast Baume B5+</div>
+<div class="preco">R$ 65</div>
+<a class="botao" href="https://meli.la/2x2CfS5">Comprar</a>
+</div>
+
+<div class="card beleza">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_964404-MLA99926127671_112025-F.webp">
+<div class="nome">Protetor Solar Anthelios</div>
+<div class="preco">R$ 66</div>
+<a class="botao" href="https://meli.la/2aZvKjD">Comprar</a>
+</div>
+
+<div class="card beleza">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_999316-MLA95680388786_102025-F.webp">
+<div class="nome">Chapinha Lizze Extreme</div>
+<div class="preco">R$ 413</div>
+<a class="botao" href="https://meli.la/2Apimbe">Comprar</a>
+</div>
+
+<!-- SUPLEMENTOS -->
+
+<div class="card suplementos">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_662415-MLA97812910758_112025-F.webp">
+<div class="nome">Creatina Growth 250g</div>
+<div class="preco">R$ 39,90</div>
+<a class="botao" href="https://meli.la/2fvRduS">Comprar</a>
+</div>
+
+</div>
 
 </div>
 
 <footer>
-
-Radar de Ofertas © 2026  
-Promoções atualizadas diariamente.
-
+Radar de Ofertas © 2026
 </footer>
-
-<script>
-
-/* LISTA DE PRODUTOS */
-
-const produtos = [
-
-{
-nome:"iPhone 14 Pro Max",
-preco:"R$ 5.339",
-img:"https://http2.mlstatic.com/D_NQ_NP_2X_896507-MLA96123118445_102025-F.webp",
-link:"https://meli.la/2a6ue9k",
-categoria:"eletronicos"
-},
-
-{
-nome:"Playstation 5 Slim",
-preco:"R$ 3.822",
-img:"https://http2.mlstatic.com/D_NQ_NP_2X_945456-MLA99456386724_112025-F.webp",
-link:"https://meli.la/2FcoRG5",
-categoria:"games"
-},
-
-{
-nome:"Air Fryer Mondial 4L",
-preco:"R$ 269",
-img:"https://http2.mlstatic.com/D_NQ_NP_2X_775407-MLA99776749612_122025-F.webp",
-link:"https://meli.la/19LrGhn",
-categoria:"casa"
-},
-
-{
-nome:"Smart TV Samsung 32",
-preco:"R$ 949",
-img:"https://http2.mlstatic.com/D_NQ_NP_2X_959706-MLA99950013507_112025-F.webp",
-link:"https://meli.la/1YM957K",
-categoria:"eletronicos"
-},
-
-{
-nome:"Creatina Growth 250g",
-preco:"R$ 39,90",
-img:"https://http2.mlstatic.com/D_NQ_NP_2X_662415-MLA97812910758_112025-F.webp",
-link:"https://meli.la/2fvRduS",
-categoria:"suplementos"
-},
-
-{
-nome:"Body Splash Masculino",
-preco:"R$ 86,90",
-img:"https://http2.mlstatic.com/D_NQ_NP_2X_847667-MLA97122485144_112025-F.webp",
-link:"https://meli.la/2Yr5NNa",
-categoria:"beleza"
-}
-
-]
-
-/* GERAR PRODUTOS */
-
-function carregar(lista){
-
-const container = document.getElementById("produtos")
-
-container.innerHTML=""
-
-lista.forEach(p=>{
-
-container.innerHTML += `
-<div class="card ${p.categoria}">
-<div class="selo">OFERTA</div>
-<img src="${p.img}">
-<div class="nome">${p.nome}</div>
-<div class="preco">${p.preco}</div>
-<a class="botao" href="${p.link}" target="_blank">Comprar</a>
-</div>
-`
-
-})
-
-}
-
-carregar(produtos)
-
-/* BUSCA */
-
-function buscar(){
-
-let termo = document.getElementById("busca").value.toLowerCase()
-
-let filtrado = produtos.filter(p =>
-p.nome.toLowerCase().includes(termo)
-)
-
-carregar(filtrado)
-
-}
-
-/* FILTRO */
-
-function filtrar(cat){
-
-if(cat=="todos"){
-carregar(produtos)
-return
-}
-
-let filtrado = produtos.filter(p =>
-p.categoria==cat
-)
-
-carregar(filtrado)
-
-}
-
-</script>
 
 </body>
 </html>
