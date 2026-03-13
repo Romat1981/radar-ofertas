@@ -8,7 +8,9 @@
 
 <title>Radar de Ofertas | Promoções Mercado Livre</title>
 
-<meta name="description" content="Radar de ofertas com promoções do Mercado Livre. Eletrônicos, games, casa e beleza com descontos todos os dias.">
+<meta name="description" content="Radar de ofertas com promoções do Mercado Livre. Eletrônicos, games, casa, beleza e suplementos com descontos atualizados todos os dias.">
+
+<meta name="keywords" content="ofertas mercado livre, promoções do dia, radar de ofertas, descontos mercado livre">
 
 <style>
 
@@ -18,6 +20,8 @@ margin:0;
 background:#f3f3f3;
 }
 
+/* HEADER */
+
 header{
 background:#ffc400;
 padding:20px;
@@ -25,6 +29,8 @@ text-align:center;
 font-size:28px;
 font-weight:bold;
 }
+
+/* BANNER */
 
 .banner{
 background:linear-gradient(90deg,#ff9900,#ffcc00);
@@ -35,6 +41,8 @@ font-weight:bold;
 color:white;
 }
 
+/* MENU */
+
 .menu{
 background:white;
 padding:15px;
@@ -42,12 +50,17 @@ text-align:center;
 box-shadow:0 3px 6px rgba(0,0,0,0.1);
 }
 
-.menu a{
-margin:0 12px;
-text-decoration:none;
+.menu button{
+margin:5px;
+padding:10px 15px;
+border:none;
+background:#eee;
+cursor:pointer;
+border-radius:6px;
 font-weight:bold;
-color:#333;
 }
+
+/* BUSCA */
 
 .busca{
 text-align:center;
@@ -62,23 +75,23 @@ border-radius:6px;
 border:1px solid #ccc;
 }
 
+/* CONTAINER */
+
 .container{
-max-width:1400px;
+max-width:1500px;
 margin:auto;
 padding:20px;
 }
 
-.categoria{
-font-size:22px;
-margin:40px 0 10px;
-font-weight:bold;
-}
+/* GRID */
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+grid-template-columns:repeat(6,1fr);
 gap:20px;
 }
+
+/* CARD */
 
 .card{
 background:white;
@@ -97,7 +110,7 @@ border-radius:8px;
 .nome{
 font-size:14px;
 margin:10px 0;
-min-height:60px;
+min-height:50px;
 }
 
 .preco{
@@ -116,6 +129,8 @@ text-decoration:none;
 margin-top:10px;
 }
 
+/* SELO */
+
 .selo{
 position:absolute;
 top:10px;
@@ -127,18 +142,18 @@ font-size:12px;
 border-radius:4px;
 }
 
+/* OFERTA RELAMPAGO */
+
 .relampago{
 background:#ff3b3b;
 color:white;
 text-align:center;
 padding:10px;
 font-weight:bold;
-margin-bottom:10px;
+margin-bottom:20px;
 }
 
-.timer{
-font-size:20px;
-}
+/* FOOTER */
 
 footer{
 text-align:center;
@@ -146,16 +161,30 @@ padding:40px;
 color:#666;
 }
 
+@media(max-width:1200px){
+.grid{
+grid-template-columns:repeat(4,1fr);
+}
+}
+
+@media(max-width:800px){
+.grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
 </style>
 
 <script>
+
+/* BUSCA */
 
 function buscarProduto(){
 
 let input=document.getElementById("busca").value.toLowerCase()
 let cards=document.getElementsByClassName("card")
 
-for(i=0;i<cards.length;i++){
+for(let i=0;i<cards.length;i++){
 
 let nome=cards[i].innerText.toLowerCase()
 
@@ -168,6 +197,32 @@ cards[i].style.display="none"
 }
 
 }
+
+/* FILTRO */
+
+function filtrar(cat){
+
+let cards=document.getElementsByClassName("card")
+
+for(let i=0;i<cards.length;i++){
+
+if(cat=="todos"){
+cards[i].style.display="block"
+}else{
+
+if(cards[i].classList.contains(cat)){
+cards[i].style.display="block"
+}else{
+cards[i].style.display="none"
+}
+
+}
+
+}
+
+}
+
+/* CONTADOR */
 
 function contador(){
 
@@ -193,89 +248,108 @@ document.getElementById("timer").innerHTML=minutos+"m "+segundos+"s"
 <body onload="contador()">
 
 <header>
+
 📡 RADAR DE OFERTAS
+
 </header>
 
 <div class="banner">
+
 🔥 OFERTAS DO DIA NO MERCADO LIVRE
+
 </div>
 
 <div class="menu">
-<a href="#">Eletrônicos</a>
-<a href="#">Games</a>
-<a href="#">Casa</a>
-<a href="#">Beleza</a>
-<a href="#">Suplementos</a>
+
+<button onclick="filtrar('todos')">Todos</button>
+<button onclick="filtrar('eletronicos')">Eletrônicos</button>
+<button onclick="filtrar('games')">Games</button>
+<button onclick="filtrar('casa')">Casa</button>
+<button onclick="filtrar('beleza')">Beleza</button>
+<button onclick="filtrar('suplementos')">Suplementos</button>
+
 </div>
 
 <div class="busca">
+
 <input id="busca" onkeyup="buscarProduto()" placeholder="Buscar produtos...">
+
 </div>
 
 <div class="container">
 
 <div class="relampago">
-⚡ OFERTA RELÂMPAGO termina em  
-<span id="timer" class="timer"></span>
-</div>
 
-<div class="categoria">Eletrônicos</div>
+⚡ OFERTA RELÂMPAGO termina em  
+<span id="timer"></span>
+
+</div>
 
 <div class="grid">
 
-<div class="card">
+<!-- ELETRONICOS -->
+
+<div class="card eletronicos">
 <div class="selo">OFERTA</div>
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_896507-MLA96123118445_102025-F.webp">
-<div class="nome">iPhone 14 Pro Max 128GB</div>
+<div class="nome">iPhone 14 Pro Max</div>
 <div class="preco">R$ 5.339</div>
 <a class="botao" href="https://meli.la/2a6ue9k" target="_blank">Comprar</a>
 </div>
 
-<div class="card">
+<div class="card eletronicos">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_936543-MLA99989050845_112025-F.webp">
 <div class="nome">Sound Bar JBL Cinema</div>
 <div class="preco">R$ 925</div>
 <a class="botao" href="https://meli.la/31uqXbU">Comprar</a>
 </div>
 
+<div class="card eletronicos">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_609505-MLA105673814081_012026-F.webp">
+<div class="nome">Carregador Turbo 40W iPhone</div>
+<div class="preco">R$ 43,55</div>
+<a class="botao" href="https://meli.la/2HUZgxD">Comprar</a>
 </div>
 
-<div class="categoria">Casa</div>
+<!-- CASA -->
 
-<div class="grid">
-
-<div class="card">
-<img src="https://http2.mlstatic.com/D_NQ_NP_2X_775407-MLA99776749612_122025-F.webp">
-<div class="nome">Air Fryer Mondial 4L</div>
-<div class="preco">R$ 269</div>
-<a class="botao" href="https://meli.la/19LrGhn">Comprar</a>
-</div>
-
-<div class="card">
+<div class="card casa">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_661078-MLA99491593886_112025-F.webp">
 <div class="nome">Panela de Pressão Elétrica Electrolux</div>
 <div class="preco">R$ 545</div>
 <a class="botao" href="https://meli.la/2UVoyHn">Comprar</a>
 </div>
 
+<div class="card casa">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_988510-MLA99501045164_112025-F.webp">
+<div class="nome">Mangueira Jardim 30m</div>
+<div class="preco">R$ 46,90</div>
+<a class="botao" href="https://meli.la/2NnapD8">Comprar</a>
 </div>
 
-<div class="categoria">Beleza</div>
+<div class="card casa">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_779417-MLA107178849021_022026-F.webp">
+<div class="nome">Amaciante Comfort Pro 7L</div>
+<div class="preco">R$ 102,59</div>
+<a class="botao" href="https://meli.la/2zFHux2">Comprar</a>
+</div>
 
-<div class="grid">
+<!-- SUPLEMENTOS -->
 
-<div class="card">
+<div class="card suplementos">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_662415-MLA97812910758_112025-F.webp">
+<div class="nome">Creatina Growth 250g</div>
+<div class="preco">R$ 39,90</div>
+<a class="botao" href="https://meli.la/2fvRduS">Comprar</a>
+</div>
+
+<!-- BELEZA -->
+
+<div class="card beleza">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_847667-MLA97122485144_112025-F.webp">
 <div class="nome">Body Splash Masculino</div>
-<div class="preco">R$ 86</div>
+<div class="preco">R$ 86,90</div>
 <a class="botao" href="https://meli.la/2Yr5NNa">Comprar</a>
-</div>
-
-<div class="card">
-<img src="https://http2.mlstatic.com/D_NQ_NP_2X_653286-MLA88348742037_072025-F.webp">
-<div class="nome">Cicaplast Baume B5+</div>
-<div class="preco">R$ 65</div>
-<a class="botao" href="https://meli.la/2x2CfS5">Comprar</a>
 </div>
 
 </div>
@@ -283,8 +357,10 @@ document.getElementById("timer").innerHTML=minutos+"m "+segundos+"s"
 </div>
 
 <footer>
+
 Radar de Ofertas © 2026  
 Promoções atualizadas diariamente.
+
 </footer>
 
 </body>
