@@ -6,44 +6,55 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Radar de Ofertas | Promoções do Dia no Mercado Livre</title>
+<title>Radar de Ofertas | Promoções do Dia Mercado Livre</title>
 
-<meta name="description" content="Radar de ofertas com promoções do Mercado Livre. TVs, celulares, eletrônicos e descontos do dia.">
+<meta name="description" content="Radar de ofertas com promoções do Mercado Livre. Eletrônicos, beleza, casa e descontos atualizados todos os dias.">
 
 <style>
 
 body{
 font-family:Arial;
-background:#f3f3f3;
 margin:0;
-text-align:center;
+background:#f5f5f5;
 }
 
 header{
 background:#ffc400;
 padding:20px;
+text-align:center;
 font-size:28px;
 font-weight:bold;
 }
 
 h2{
-margin-top:30px;
+text-align:center;
+margin-top:40px;
 }
 
 .container{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:30px;
-padding:30px;
+max-width:1400px;
+margin:auto;
+padding:20px;
+}
+
+.produtos{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
 }
 
 .card{
+
 background:white;
-width:280px;
 border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
 padding:15px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+text-align:center;
+transition:0.2s;
+}
+
+.card:hover{
+transform:scale(1.02);
 }
 
 .card img{
@@ -51,21 +62,44 @@ width:100%;
 border-radius:8px;
 }
 
+.nome{
+font-size:14px;
+margin:10px 0;
+min-height:60px;
+}
+
 .preco{
-color:#0a8f3c;
+color:#00a650;
 font-size:22px;
 font-weight:bold;
 margin:10px 0;
 }
 
 .botao{
-background:#0a8f3c;
+
+background:#00a650;
 color:white;
 padding:10px;
 border-radius:6px;
 text-decoration:none;
-display:block;
-margin-top:10px;
+display:inline-block;
+margin-top:8px;
+font-weight:bold;
+
+}
+
+.categoria{
+margin-top:40px;
+font-size:24px;
+font-weight:bold;
+border-left:6px solid #ffc400;
+padding-left:10px;
+}
+
+footer{
+text-align:center;
+padding:40px;
+color:#777;
 }
 
 </style>
@@ -78,144 +112,131 @@ margin-top:10px;
 📡 RADAR DE OFERTAS
 </header>
 
-<h2>🔥 Ofertas do Dia</h2>
-
 <div class="container">
 
-
-<!-- Air Fryer -->
-
-<div class="card">
-<img src="https://http2.mlstatic.com/D_NQ_NP_2X_775407-MLA99776749612_122025-F.webp">
-<h3>Fritadeira Sem Óleo Air Fryer Mondial 4L</h3>
-<div class="preco">R$ 269</div>
-<a class="botao" href="https://meli.la/19LrGhn" target="_blank">
-🛒 Comprar no Mercado Livre
-</a>
-</div>
+<h2>🔥 Ofertas do Dia</h2>
 
 
-<!-- TV Samsung -->
+<div class="categoria">Eletrônicos</div>
+
+<div class="produtos">
 
 <div class="card">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_959706-MLA99950013507_112025-F.webp">
-<h3>Smart TV Samsung 32'' HD LED</h3>
-<div class="preco">R$ 949</div>
-<a class="botao" href="https://meli.la/1YM957K" target="_blank">
-🛒 Comprar no Mercado Livre
-</a>
+<div class="nome">Smart TV Samsung 32" HD LED</div>
+<div class="preco">R$ 949,90</div>
+<a class="botao" href="https://meli.la/1YM957K" target="_blank">Comprar</a>
 </div>
-
-
-<!-- TV AOC -->
 
 <div class="card">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_648316-MLA99473453820_112025-F.webp">
-<h3>Smart TV AOC 50'' 4K Roku TV</h3>
-<div class="preco">R$ 2.193</div>
-<a class="botao" href="https://meli.la/2HLz2ko" target="_blank">
-🛒 Comprar no Mercado Livre
-</a>
+<div class="nome">Smart TV AOC 50" 4K Roku</div>
+<div class="preco">R$ 2.193,87</div>
+<a class="botao" href="https://meli.la/2HLz2ko" target="_blank">Comprar</a>
 </div>
-
-
-<!-- Perfume Infantil -->
-
-<div class="card">
-<img src="https://http2.mlstatic.com/D_NQ_NP_2X_747644-MLA79343378494_092024-F.webp">
-<h3>Kit 3 Perfumes Cebolinha Turma da Mônica</h3>
-<div class="preco">R$ 65</div>
-<a class="botao" href="https://meli.la/1r3WA71" target="_blank">
-🛒 Comprar no Mercado Livre
-</a>
-</div>
-
-
-<!-- Motorola G06 -->
 
 <div class="card">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_945623-MLA96724963315_102025-F.webp">
-<h3>Smartphone Motorola Moto G06 128GB</h3>
-<div class="preco">R$ 599</div>
-<a class="botao" href="https://meli.la/2WVQXUt" target="_blank">
-🛒 Comprar no Mercado Livre
-</a>
+<div class="nome">Motorola Moto G06 128GB</div>
+<div class="preco">R$ 599,40</div>
+<a class="botao" href="https://meli.la/2WVQXUt" target="_blank">Comprar</a>
+</div>
+
 </div>
 
 
-<!-- Body Splash -->
+<div class="categoria">Casa</div>
+
+<div class="produtos">
 
 <div class="card">
-<img src="https://http2.mlstatic.com/D_NQ_NP_2X_847667-MLA97122485144_112025-F.webp">
-<h3>Body Splash Masculino Barbarius Midtown 200ml</h3>
-<div class="preco">R$ 86,90</div>
-<a class="botao" href="https://meli.la/2Yr5NNa" target="_blank">
-🛒 Comprar no Mercado Livre
-</a>
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_775407-MLA99776749612_122025-F.webp">
+<div class="nome">Air Fryer Mondial 4L 1500W</div>
+<div class="preco">R$ 269,10</div>
+<a class="botao" href="https://meli.la/19LrGhn" target="_blank">Comprar</a>
 </div>
-
-
-<!-- PS5 -->
-
-<div class="card">
-<img src="https://http2.mlstatic.com/D_NQ_NP_2X_945456-MLA99456386724_112025-F.webp">
-<h3>Console Playstation 5 Slim + Astro Bot + Gran Turismo 7</h3>
-<div class="preco">R$ 3.822</div>
-<a class="botao" href="https://meli.la/2FcoRG5" target="_blank">
-🛒 Comprar no Mercado Livre
-</a>
-</div>
-
-
-<!-- Câmeras -->
-
-<div class="card">
-<img src="https://http2.mlstatic.com/D_NQ_NP_2X_901090-MLA99414404486_112025-F.webp">
-<h3>Kit 2 Câmeras Wifi Segurança Icsee</h3>
-<div class="preco">R$ 185,99</div>
-<a class="botao" href="https://meli.la/1kyaCgG" target="_blank">
-🛒 Comprar no Mercado Livre
-</a>
-</div>
-
-
-<!-- Parafusadeira -->
 
 <div class="card">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_865332-MLA96868279679_102025-F.webp">
-<h3>Parafusadeira Furadeira Impacto TB-21PX</h3>
+<div class="nome">Parafusadeira Profissional 2 Baterias</div>
 <div class="preco">R$ 179</div>
-<a class="botao" href="https://meli.la/21ngykQ" target="_blank">
-🛒 Comprar no Mercado Livre
-</a>
+<a class="botao" href="https://meli.la/21ngykQ" target="_blank">Comprar</a>
 </div>
-
-
-<!-- Chuveiro -->
 
 <div class="card">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_661398-MLA83775380474_042025-F.webp">
-<h3>Chuveiro Lorenzetti Acqua Ultra Duo 7800W</h3>
-<div class="preco">R$ 505</div>
-<a class="botao" href="https://meli.la/26DdA1c" target="_blank">
-🛒 Comprar no Mercado Livre
-</a>
+<div class="nome">Chuveiro Lorenzetti Acqua Ultra</div>
+<div class="preco">R$ 505,10</div>
+<a class="botao" href="https://meli.la/26DdA1c" target="_blank">Comprar</a>
+</div>
+
 </div>
 
 
-<!-- Chapinha -->
+<div class="categoria">Beleza</div>
+
+<div class="produtos">
+
+<div class="card">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_847667-MLA97122485144_112025-F.webp">
+<div class="nome">Body Splash Masculino 200ml</div>
+<div class="preco">R$ 86,90</div>
+<a class="botao" href="https://meli.la/2Yr5NNa" target="_blank">Comprar</a>
+</div>
+
+<div class="card">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_948198-MLA81769955450_012025-F.webp">
+<div class="nome">Attracione Men Perfume 25ml</div>
+<div class="preco">R$ 66,93</div>
+<a class="botao" href="https://meli.la/1JYx8Ef" target="_blank">Comprar</a>
+</div>
+
+<div class="card">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_653286-MLA88348742037_072025-F.webp">
+<div class="nome">Cicaplast Baume B5+ La Roche</div>
+<div class="preco">R$ 65,11</div>
+<a class="botao" href="https://meli.la/2x2CfS5" target="_blank">Comprar</a>
+</div>
+
+<div class="card">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_964404-MLA99926127671_112025-F.webp">
+<div class="nome">Protetor Solar Anthelios FPS80</div>
+<div class="preco">R$ 66,45</div>
+<a class="botao" href="https://meli.la/2aZvKjD" target="_blank">Comprar</a>
+</div>
 
 <div class="card">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_999316-MLA95680388786_102025-F.webp">
-<h3>Prancha Lizze Chapinha Profissional 480 Extreme</h3>
-<div class="preco">R$ 413</div>
-<a class="botao" href="https://meli.la/2Apimbe" target="_blank">
-🛒 Comprar no Mercado Livre
-</a>
+<div class="nome">Chapinha Lizze 480 Extreme</div>
+<div class="preco">R$ 413,10</div>
+<a class="botao" href="https://meli.la/2Apimbe" target="_blank">Comprar</a>
+</div>
+
+</div>
+
+
+<div class="categoria">Games</div>
+
+<div class="produtos">
+
+<div class="card">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_945456-MLA99456386724_112025-F.webp">
+<div class="nome">Playstation 5 Slim + Gran Turismo</div>
+<div class="preco">R$ 3.822,29</div>
+<a class="botao" href="https://meli.la/2FcoRG5" target="_blank">Comprar</a>
+</div>
+
 </div>
 
 
 </div>
+
+<footer>
+
+Radar de Ofertas © 2026  
+Promoções atualizadas diariamente.
+
+</footer>
 
 </body>
 </html>
