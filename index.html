@@ -6,11 +6,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Radar de Ofertas | Promoções Mercado Livre, Eletrônicos, Games e Descontos</title>
+<title>Radar de Ofertas | Promoções Mercado Livre</title>
 
-<meta name="description" content="Radar de ofertas com promoções do Mercado Livre. Celulares, TVs, eletrônicos, beleza e casa com descontos atualizados todos os dias.">
-
-<meta name="keywords" content="ofertas mercado livre, promoções do dia, radar de ofertas, eletrônicos baratos, descontos mercado livre">
+<meta name="description" content="Radar de ofertas com promoções do Mercado Livre. Eletrônicos, games, casa e beleza com descontos todos os dias.">
 
 <style>
 
@@ -162,13 +160,9 @@ for(i=0;i<cards.length;i++){
 let nome=cards[i].innerText.toLowerCase()
 
 if(nome.includes(input)){
-
 cards[i].style.display="block"
-
 }else{
-
 cards[i].style.display="none"
-
 }
 
 }
@@ -199,41 +193,33 @@ document.getElementById("timer").innerHTML=minutos+"m "+segundos+"s"
 <body onload="contador()">
 
 <header>
-
 📡 RADAR DE OFERTAS
-
 </header>
 
 <div class="banner">
-
 🔥 OFERTAS DO DIA NO MERCADO LIVRE
-
 </div>
 
 <div class="menu">
-
 <a href="#">Eletrônicos</a>
 <a href="#">Games</a>
 <a href="#">Casa</a>
 <a href="#">Beleza</a>
 <a href="#">Suplementos</a>
-
 </div>
 
 <div class="busca">
-
 <input id="busca" onkeyup="buscarProduto()" placeholder="Buscar produtos...">
-
 </div>
 
 <div class="container">
 
 <div class="relampago">
-
 ⚡ OFERTA RELÂMPAGO termina em  
 <span id="timer" class="timer"></span>
-
 </div>
+
+<div class="categoria">Eletrônicos</div>
 
 <div class="grid">
 
@@ -246,45 +232,50 @@ document.getElementById("timer").innerHTML=minutos+"m "+segundos+"s"
 </div>
 
 <div class="card">
-<img src="https://http2.mlstatic.com/D_NQ_NP_2X_609505-MLA105673814081_012026-F.webp">
-<div class="nome">Carregador Turbo 40W iPhone</div>
-<div class="preco">R$ 43,55</div>
-<a class="botao" href="https://meli.la/2HUZgxD" target="_blank">Comprar</a>
-</div>
-
-<div class="card">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_936543-MLA99989050845_112025-F.webp">
-<div class="nome">Sound Bar JBL Cinema SB180</div>
+<div class="nome">Sound Bar JBL Cinema</div>
 <div class="preco">R$ 925</div>
-<a class="botao" href="https://meli.la/31uqXbU" target="_blank">Comprar</a>
+<a class="botao" href="https://meli.la/31uqXbU">Comprar</a>
 </div>
 
-<div class="card">
-<img src="https://http2.mlstatic.com/D_NQ_NP_2X_662415-MLA97812910758_112025-F.webp">
-<div class="nome">Creatina Growth 250g</div>
-<div class="preco">R$ 39,90</div>
-<a class="botao" href="https://meli.la/2fvRduS" target="_blank">Comprar</a>
 </div>
 
-<div class="card">
-<img src="https://http2.mlstatic.com/D_NQ_NP_2X_988510-MLA99501045164_112025-F.webp">
-<div class="nome">Mangueira Jardim 30m</div>
-<div class="preco">R$ 46,90</div>
-<a class="botao" href="https://meli.la/2NnapD8" target="_blank">Comprar</a>
-</div>
+<div class="categoria">Casa</div>
+
+<div class="grid">
 
 <div class="card">
-<img src="https://http2.mlstatic.com/D_NQ_NP_2X_779417-MLA107178849021_022026-F.webp">
-<div class="nome">Amaciante Comfort Pro 7L</div>
-<div class="preco">R$ 102,59</div>
-<a class="botao" href="https://meli.la/2zFHux2" target="_blank">Comprar</a>
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_775407-MLA99776749612_122025-F.webp">
+<div class="nome">Air Fryer Mondial 4L</div>
+<div class="preco">R$ 269</div>
+<a class="botao" href="https://meli.la/19LrGhn">Comprar</a>
 </div>
 
 <div class="card">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_661078-MLA99491593886_112025-F.webp">
-<div class="nome">Panela de Pressão Elétrica Electrolux 6L</div>
+<div class="nome">Panela de Pressão Elétrica Electrolux</div>
 <div class="preco">R$ 545</div>
-<a class="botao" href="https://meli.la/2UVoyHn" target="_blank">Comprar</a>
+<a class="botao" href="https://meli.la/2UVoyHn">Comprar</a>
+</div>
+
+</div>
+
+<div class="categoria">Beleza</div>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_847667-MLA97122485144_112025-F.webp">
+<div class="nome">Body Splash Masculino</div>
+<div class="preco">R$ 86</div>
+<a class="botao" href="https://meli.la/2Yr5NNa">Comprar</a>
+</div>
+
+<div class="card">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_653286-MLA88348742037_072025-F.webp">
+<div class="nome">Cicaplast Baume B5+</div>
+<div class="preco">R$ 65</div>
+<a class="botao" href="https://meli.la/2x2CfS5">Comprar</a>
 </div>
 
 </div>
@@ -292,12 +283,9 @@ document.getElementById("timer").innerHTML=minutos+"m "+segundos+"s"
 </div>
 
 <footer>
-
 Radar de Ofertas © 2026  
 Promoções atualizadas diariamente.
-
 </footer>
 
 </body>
-
 </html>
