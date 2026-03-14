@@ -29,24 +29,10 @@ link:"https://meli.la/2fvRduS"
 },
 
 {
-nome:"Mangueira de Jardim 30m",
+nome:"Mangueira Jardim 30m",
 preco:"R$ 46,90",
 foto:"https://http2.mlstatic.com/D_NQ_NP_2X_988510-MLA99501045164_112025-F.webp",
 link:"https://meli.la/2NnapD8"
-},
-
-{
-nome:"Amaciante Comfort Pro 7L",
-preco:"R$ 102,59",
-foto:"https://http2.mlstatic.com/D_NQ_NP_2X_779417-MLA107178849021_022026-F.webp",
-link:"https://meli.la/2zFHux2"
-},
-
-{
-nome:"Panela de Pressão Elétrica Electrolux 6L",
-preco:"R$ 545",
-foto:"https://http2.mlstatic.com/D_NQ_NP_2X_661078-MLA99491593886_112025-F.webp",
-link:"https://meli.la/2UVoyHn"
 }
 
 ];
