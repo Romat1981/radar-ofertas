@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Radar de Ofertas | Promoções Mercado Livre</title>
-<meta name="description" content="Radar de ofertas com promoções do Mercado Livre. Eletrônicos, games, beleza, casa e suplementos com descontos atualizados.">
+<meta name="description" content="Radar de ofertas com promoções do Mercado Livre. Eletrônicos, games, casa, beleza e suplementos com descontos atualizados.">
 
 <style>
 body{
@@ -26,7 +27,7 @@ font-weight:bold;
 background:linear-gradient(90deg,#ff9900,#ffcc00);
 text-align:center;
 padding:25px;
-font-size:24px;
+font-size:22px;
 font-weight:bold;
 color:white;
 }
@@ -99,7 +100,7 @@ border-radius:8px;
 .nome{
 font-size:14px;
 margin:10px 0;
-min-height:60px;
+min-height:50px;
 }
 
 .preco{
@@ -152,8 +153,7 @@ color:#666;
 <div class="container">
 
 <div class="relampago">
-⚡ OFERTA RELÂMPAGO termina em
-<span id="timer" class="timer"></span>
+⚡ OFERTA RELÂMPAGO termina em <span id="timer" class="timer"></span>
 </div>
 
 <div class="grid"></div>
@@ -164,6 +164,7 @@ color:#666;
 Radar de Ofertas © 2026
 </footer>
 
+<!-- CARREGA OS PRODUTOS -->
 <script src="produtos.js"></script>
 
 <script>
@@ -193,22 +194,22 @@ document.getElementById("timer").innerHTML=minutos+"m "+segundos+"s"
 
 contador()
 
-const grid = document.querySelector(".grid");
+const grid=document.querySelector(".grid")
 
 produtos.forEach(function(produto){
 
-const card = document.createElement("div");
-card.className="card";
+const card=document.createElement("div")
+card.className="card"
 
 card.innerHTML=
-'<img src="'+produto.img+'">'+
+'<img src="'+produto.foto+'">'+
 '<div class="nome">'+produto.nome+'</div>'+
 '<div class="preco">'+produto.preco+'</div>'+
-'<a class="botao" href="'+produto.link+'" target="_blank">Comprar</a>';
+'<a class="botao" href="'+produto.link+'" target="_blank">Comprar</a>'
 
-grid.appendChild(card);
+grid.appendChild(card)
 
-});
+})
 
 </script>
 
