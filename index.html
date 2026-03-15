@@ -11,7 +11,7 @@
 <style>
 
 body{
-font-family:Arial;
+font-family:Arial, Helvetica;
 margin:0;
 background:#ebebeb;
 }
@@ -44,35 +44,6 @@ margin:auto;
 padding:20px;
 }
 
-.admin{
-background:white;
-padding:15px;
-border-radius:8px;
-margin-bottom:20px;
-}
-
-textarea,input{
-width:100%;
-padding:8px;
-margin:5px 0;
-border:1px solid #ccc;
-border-radius:4px;
-}
-
-textarea{
-min-height:100px;
-}
-
-button{
-background:#3483fa;
-color:white;
-border:none;
-padding:10px;
-border-radius:4px;
-cursor:pointer;
-width:100%;
-}
-
 .grid{
 display:grid;
 grid-template-columns:repeat(4,1fr);
@@ -81,9 +52,10 @@ gap:15px;
 
 .card{
 background:white;
-padding:12px;
+padding:10px;
 border-radius:8px;
 border:1px solid #ddd;
+text-align:center;
 }
 
 .card img{
@@ -94,22 +66,16 @@ object-fit:contain;
 
 .nome{
 font-size:14px;
-margin:8px 0;
+margin:10px 0;
 height:40px;
 overflow:hidden;
 }
 
 .preco{
-font-size:24px;
+font-size:22px;
 font-weight:bold;
-color:#333;
-margin-bottom:6px;
-}
-
-.info{
-font-size:14px;
 color:#00a650;
-line-height:1.5;
+margin-bottom:10px;
 }
 
 .botao{
@@ -119,25 +85,20 @@ color:white;
 padding:8px;
 border-radius:4px;
 text-decoration:none;
-margin-top:10px;
-text-align:center;
 }
 
-.excluir{
-background:#ff4d4d;
-margin-top:5px;
-padding:6px;
-color:white;
-border:none;
-border-radius:4px;
-width:100%;
-cursor:pointer;
+footer{
+text-align:center;
+padding:30px;
+color:#666;
 }
 
 @media(max-width:900px){
+
 .grid{
 grid-template-columns:repeat(2,1fr);
 }
+
 }
 
 </style>
@@ -160,122 +121,47 @@ grid-template-columns:repeat(2,1fr);
 
 <div class="container">
 
-<div class="admin">
+<div class="grid">
 
-<h3>Adicionar Produto</h3>
+<!-- PRODUTO 1 -->
+<div class="card">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_936543-MLA99989050845_112025-F.webp">
+<div class="nome">Sound Bar JBL Cinema SB180</div>
+<div class="preco">R$ 925</div>
+<a class="botao" href="https://meli.la/31uqXbU" target="_blank">Comprar</a>
+</div>
 
-<input id="nome" placeholder="Nome do produto">
+<!-- PRODUTO 2 -->
+<div class="card">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_896507-MLA96123118445_102025-F.webp">
+<div class="nome">iPhone 14 Pro Max 128GB</div>
+<div class="preco">R$ 5.339</div>
+<a class="botao" href="https://meli.la/2a6ue9k" target="_blank">Comprar</a>
+</div>
 
-<input id="foto" placeholder="Link da imagem">
+<!-- PRODUTO 3 -->
+<div class="card">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_662415-MLA97812910758_112025-F.webp">
+<div class="nome">Creatina Growth 250g</div>
+<div class="preco">R$ 39,90</div>
+<a class="botao" href="https://meli.la/2fvRduS" target="_blank">Comprar</a>
+</div>
 
-<textarea id="texto" placeholder="Cole o texto do Mercado Livre"></textarea>
-
-<input id="link" placeholder="Link do produto">
-
-<button onclick="adicionar()">Adicionar Produto</button>
+<!-- PRODUTO 4 -->
+<div class="card">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_609505-MLA105673814081_012026-F.webp">
+<div class="nome">Carregador Turbo 40W iPhone</div>
+<div class="preco">R$ 43,55</div>
+<a class="botao" href="https://meli.la/2HUZgxD" target="_blank">Comprar</a>
+</div>
 
 </div>
 
-<div class="grid" id="grid"></div>
-
 </div>
 
-<script>
-
-let produtos = JSON.parse(localStorage.getItem("produtos")) || []
-
-function salvar(){
-localStorage.setItem("produtos", JSON.stringify(produtos))
-}
-
-function limparTexto(t){
-
-t = t.replace(/R\$\s+/g,"R$ ")
-t = t.replace(/(\d)\s*,\s*(\d)/g,"$1,$2")
-t = t.replace(/(\d)\s+(\d)/g,"$1$2")
-t = t.replace(/\n+/g," ")
-t = t.replace(/\s+/g," ")
-
-return t
-
-}
-
-function extrairPreco(t){
-
-let m = t.match(/R\$\s?[0-9\.]+,?[0-9]*/)
-
-if(m){
-return m[0]
-}
-
-return ""
-
-}
-
-function adicionar(){
-
-let nome=document.getElementById("nome").value
-let foto=document.getElementById("foto").value
-let texto=document.getElementById("texto").value
-let link=document.getElementById("link").value
-
-texto = limparTexto(texto)
-
-let preco = extrairPreco(texto)
-
-produtos.push({nome,foto,texto,preco,link})
-
-salvar()
-
-document.getElementById("nome").value=""
-document.getElementById("foto").value=""
-document.getElementById("texto").value=""
-document.getElementById("link").value=""
-
-mostrar()
-
-}
-
-function excluir(i){
-
-produtos.splice(i,1)
-
-salvar()
-
-mostrar()
-
-}
-
-function mostrar(){
-
-let grid=document.getElementById("grid")
-
-grid.innerHTML=""
-
-produtos.forEach(function(p,i){
-
-let card=document.createElement("div")
-
-card.className="card"
-
-card.innerHTML=
-
-'<img src="'+p.foto+'">'+
-'<div class="nome">'+p.nome+'</div>'+
-'<div class="preco">'+p.preco+'</div>'+
-'<div class="info">'+p.texto+'</div>'+
-'<a class="botao" href="'+p.link+'" target="_blank">Comprar</a>'+
-'<button class="excluir" onclick="excluir('+i+')">Excluir</button>'
-
-grid.appendChild(card)
-
-})
-
-}
-
-mostrar()
-
-</script>
+<footer>
+Radar de Ofertas © 2026
+</footer>
 
 </body>
 </html>
