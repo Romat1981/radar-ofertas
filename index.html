@@ -11,7 +11,7 @@
 <style>
 
 body{
-font-family:Arial,Helvetica;
+font-family:Arial;
 margin:0;
 background:#ebebeb;
 }
@@ -60,7 +60,7 @@ border-radius:4px;
 }
 
 textarea{
-min-height:90px;
+min-height:100px;
 }
 
 button{
@@ -108,9 +108,8 @@ margin-bottom:6px;
 
 .info{
 font-size:14px;
-color:#666;
-line-height:1.4;
-margin-top:5px;
+color:#00a650;
+line-height:1.5;
 }
 
 .botao{
@@ -169,7 +168,7 @@ grid-template-columns:repeat(2,1fr);
 
 <input id="foto" placeholder="Link da imagem">
 
-<textarea id="texto" placeholder="Cole o texto da página do Mercado Livre"></textarea>
+<textarea id="texto" placeholder="Cole o texto do Mercado Livre"></textarea>
 
 <input id="link" placeholder="Link do produto">
 
@@ -189,23 +188,24 @@ function salvar(){
 localStorage.setItem("produtos", JSON.stringify(produtos))
 }
 
-function limparTexto(texto){
+function limparTexto(t){
 
-texto = texto.replace(/\\n+/g," ")
-texto = texto.replace(/\\s+/g," ")
-texto = texto.replace(/ , /g,", ")
-texto = texto.replace(/R\\$ /g,"R$ ")
+t = t.replace(/R\$\s+/g,"R$ ")
+t = t.replace(/(\d)\s*,\s*(\d)/g,"$1,$2")
+t = t.replace(/(\d)\s+(\d)/g,"$1$2")
+t = t.replace(/\n+/g," ")
+t = t.replace(/\s+/g," ")
 
-return texto.trim()
+return t
 
 }
 
-function extrairPreco(texto){
+function extrairPreco(t){
 
-let match = texto.match(/R\\$\\s?[0-9\\.]+,?[0-9]*/)
+let m = t.match(/R\$\s?[0-9\.]+,?[0-9]*/)
 
-if(match){
-return match[0]
+if(m){
+return m[0]
 }
 
 return ""
