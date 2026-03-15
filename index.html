@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 
 <meta charset="UTF-8">
@@ -50,12 +51,20 @@ border-radius:8px;
 margin-bottom:20px;
 }
 
+.admin textarea,
 .admin input{
+
 width:100%;
 padding:8px;
 margin:5px 0;
 border:1px solid #ccc;
 border-radius:4px;
+font-family:Arial;
+}
+
+.admin textarea{
+min-height:60px;
+resize:vertical;
 }
 
 .admin button{
@@ -89,7 +98,8 @@ object-fit:contain;
 
 .nome{
 font-size:14px;
-height:40px;
+white-space:pre-line;
+height:50px;
 overflow:hidden;
 }
 
@@ -98,6 +108,7 @@ color:#00a650;
 font-size:20px;
 font-weight:bold;
 margin:5px 0;
+white-space:pre-line;
 }
 
 .botao{
@@ -121,9 +132,11 @@ border-radius:4px;
 }
 
 @media(max-width:900px){
+
 .grid{
 grid-template-columns:repeat(2,1fr);
 }
+
 }
 
 </style>
@@ -150,9 +163,12 @@ grid-template-columns:repeat(2,1fr);
 
 <h3>Adicionar Produto</h3>
 
-<input id="nome" placeholder="Nome do produto">
-<input id="preco" placeholder="Preço">
+<textarea id="nome" placeholder="Nome do produto"></textarea>
+
+<textarea id="preco" placeholder="Preço"></textarea>
+
 <input id="foto" placeholder="Link da imagem">
+
 <input id="link" placeholder="Link Mercado Livre">
 
 <button onclick="adicionar()">Adicionar Produto</button>
@@ -168,7 +184,9 @@ grid-template-columns:repeat(2,1fr);
 let produtos = JSON.parse(localStorage.getItem("produtos")) || []
 
 function salvar(){
+
 localStorage.setItem("produtos", JSON.stringify(produtos))
+
 }
 
 function adicionar(){
@@ -232,4 +250,5 @@ mostrar()
 </script>
 
 </body>
+
 </html>
