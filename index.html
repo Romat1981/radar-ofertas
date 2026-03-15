@@ -2,13 +2,20 @@
 <html lang="pt-BR">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Radar de Ofertas | Promoções Mercado Livre</title>
-<meta name="description" content="Radar de ofertas com promoções do Mercado Livre. Eletrônicos, games, casa, beleza e suplementos com descontos atualizados.">
+<title>Radar de Ofertas | Promoções do Mercado Livre</title>
+
+<meta name="description" content="Radar de ofertas com promoções atualizadas do Mercado Livre. Celulares, eletrônicos, games, casa, beleza e muito mais.">
+
+<meta name="keywords" content="ofertas mercado livre, promoções do dia, radar de ofertas, eletrônicos baratos">
+
+<meta name="robots" content="index, follow">
 
 <style>
+
 body{
 font-family:Arial, Helvetica, sans-serif;
 margin:0;
@@ -124,6 +131,7 @@ text-align:center;
 padding:40px;
 color:#666;
 }
+
 </style>
 
 </head>
@@ -147,16 +155,17 @@ color:#666;
 </div>
 
 <div class="busca">
-<input id="busca" onkeyup="buscarProduto()" placeholder="Buscar produtos...">
+<input id="busca" placeholder="Buscar produtos..." onkeyup="buscarProduto()">
 </div>
 
 <div class="container">
 
 <div class="relampago">
-⚡ OFERTA RELÂMPAGO termina em <span id="timer" class="timer"></span>
+⚡ OFERTA RELÂMPAGO termina em
+<span id="timer" class="timer"></span>
 </div>
 
-<div class="grid"></div>
+<div class="grid" id="produtos"></div>
 
 </div>
 
@@ -164,48 +173,66 @@ color:#666;
 Radar de Ofertas © 2026
 </footer>
 
-<!-- CARREGA OS PRODUTOS -->
-<script src="produtos.js"></script>
+<script src="./produtos.js"></script>
 
 <script>
 
 function buscarProduto(){
+
 let input=document.getElementById("busca").value.toLowerCase()
+
 let cards=document.querySelectorAll(".card")
 
 cards.forEach(function(card){
+
 if(card.innerText.toLowerCase().includes(input)){
+
 card.style.display="block"
+
 }else{
+
 card.style.display="none"
+
 }
+
 })
+
 }
 
 function contador(){
+
 let tempo=3600
+
 setInterval(function(){
+
 tempo--
+
 let minutos=Math.floor(tempo/60)
+
 let segundos=tempo%60
+
 document.getElementById("timer").innerHTML=minutos+"m "+segundos+"s"
+
 },1000)
+
 }
 
 contador()
 
-const grid=document.querySelector(".grid")
+const grid=document.getElementById("produtos")
 
-produtos.forEach(function(produto){
+produtos.forEach(function(p){
 
 const card=document.createElement("div")
+
 card.className="card"
 
 card.innerHTML=
-'<img src="'+produto.foto+'">'+
-'<div class="nome">'+produto.nome+'</div>'+
-'<div class="preco">'+produto.preco+'</div>'+
-'<a class="botao" href="'+produto.link+'" target="_blank">Comprar</a>'
+
+'<img src="'+p.foto+'">'+
+'<div class="nome">'+p.nome+'</div>'+
+'<div class="preco">'+p.preco+'</div>'+
+'<a class="botao" href="'+p.link+'" target="_blank">Comprar</a>'
 
 grid.appendChild(card)
 
