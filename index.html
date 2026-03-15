@@ -11,7 +11,7 @@
 <style>
 
 body{
-font-family:Arial,Helvetica,sans-serif;
+font-family:Arial,Helvetica;
 margin:0;
 background:#ebebeb;
 }
@@ -51,29 +51,25 @@ border-radius:8px;
 margin-bottom:20px;
 }
 
-.admin textarea,
-.admin input{
-
+textarea,input{
 width:100%;
 padding:8px;
 margin:5px 0;
 border:1px solid #ccc;
 border-radius:4px;
-font-family:Arial;
 }
 
-.admin textarea{
+textarea{
 min-height:90px;
-resize:vertical;
 }
 
-.admin button{
+button{
 background:#3483fa;
 color:white;
 border:none;
 padding:10px;
-cursor:pointer;
 border-radius:4px;
+cursor:pointer;
 width:100%;
 }
 
@@ -85,7 +81,7 @@ gap:15px;
 
 .card{
 background:white;
-padding:10px;
+padding:12px;
 border-radius:8px;
 border:1px solid #ddd;
 }
@@ -98,19 +94,21 @@ object-fit:contain;
 
 .nome{
 font-size:14px;
-margin:6px 0;
+margin:8px 0;
+height:40px;
+overflow:hidden;
 }
 
 .preco{
-font-size:22px;
+font-size:24px;
 font-weight:bold;
 color:#333;
+margin-bottom:6px;
 }
 
 .info{
 font-size:14px;
-color:#00a650;
-white-space:pre-line;
+color:#666;
 line-height:1.4;
 margin-top:5px;
 }
@@ -129,20 +127,18 @@ text-align:center;
 .excluir{
 background:#ff4d4d;
 margin-top:5px;
-padding:5px;
+padding:6px;
 color:white;
 border:none;
-cursor:pointer;
 border-radius:4px;
 width:100%;
+cursor:pointer;
 }
 
 @media(max-width:900px){
-
 .grid{
 grid-template-columns:repeat(2,1fr);
 }
-
 }
 
 </style>
@@ -171,11 +167,11 @@ grid-template-columns:repeat(2,1fr);
 
 <input id="nome" placeholder="Nome do produto">
 
-<input id="foto" placeholder="Link da imagem do produto">
+<input id="foto" placeholder="Link da imagem">
 
-<textarea id="texto" placeholder="Cole aqui o texto copiado da página do Mercado Livre"></textarea>
+<textarea id="texto" placeholder="Cole o texto da página do Mercado Livre"></textarea>
 
-<input id="link" placeholder="Cole o link do produto do Mercado Livre">
+<input id="link" placeholder="Link do produto">
 
 <button onclick="adicionar()">Adicionar Produto</button>
 
@@ -190,8 +186,17 @@ grid-template-columns:repeat(2,1fr);
 let produtos = JSON.parse(localStorage.getItem("produtos")) || []
 
 function salvar(){
-
 localStorage.setItem("produtos", JSON.stringify(produtos))
+}
+
+function limparTexto(texto){
+
+texto = texto.replace(/\\n+/g," ")
+texto = texto.replace(/\\s+/g," ")
+texto = texto.replace(/ , /g,", ")
+texto = texto.replace(/R\\$ /g,"R$ ")
+
+return texto.trim()
 
 }
 
@@ -200,9 +205,7 @@ function extrairPreco(texto){
 let match = texto.match(/R\\$\\s?[0-9\\.]+,?[0-9]*/)
 
 if(match){
-
 return match[0]
-
 }
 
 return ""
@@ -216,7 +219,9 @@ let foto=document.getElementById("foto").value
 let texto=document.getElementById("texto").value
 let link=document.getElementById("link").value
 
-let preco=extrairPreco(texto)
+texto = limparTexto(texto)
+
+let preco = extrairPreco(texto)
 
 produtos.push({nome,foto,texto,preco,link})
 
@@ -273,5 +278,4 @@ mostrar()
 </script>
 
 </body>
-
 </html>
