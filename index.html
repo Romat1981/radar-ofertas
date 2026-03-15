@@ -6,9 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Radar de Ofertas | Promoções Mercado Livre</title>
-
-<meta name="description" content="Radar de ofertas com promoções atualizadas do Mercado Livre">
+<title>Radar de Ofertas</title>
 
 <style>
 
@@ -22,16 +20,22 @@ header{
 background:#ffc400;
 padding:20px;
 text-align:center;
-font-size:28px;
+font-size:26px;
 font-weight:bold;
 }
 
-.banner{
-background:#ff9900;
+.menu{
+background:white;
+padding:10px;
 text-align:center;
-padding:20px;
-color:white;
-font-size:22px;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+.menu a{
+margin:0 10px;
+text-decoration:none;
+font-weight:bold;
+color:#333;
 }
 
 .container{
@@ -40,27 +44,55 @@ margin:auto;
 padding:20px;
 }
 
+.admin{
+background:white;
+padding:15px;
+border-radius:8px;
+margin-bottom:20px;
+}
+
+.admin input{
+width:100%;
+padding:8px;
+margin:5px 0;
+}
+
+.admin button{
+background:#ffc400;
+border:none;
+padding:10px;
+cursor:pointer;
+font-weight:bold;
+}
+
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+grid-template-columns:repeat(4,1fr);
 gap:20px;
 }
 
 .card{
 background:white;
-padding:15px;
+padding:10px;
 border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
+box-shadow:0 3px 6px rgba(0,0,0,0.1);
 text-align:center;
 }
 
 .card img{
 width:100%;
+height:180px;
+object-fit:contain;
+}
+
+.nome{
+font-size:14px;
+margin:10px 0;
 }
 
 .preco{
 color:#00a650;
-font-size:22px;
+font-size:18px;
 font-weight:bold;
 }
 
@@ -68,31 +100,18 @@ font-weight:bold;
 display:inline-block;
 background:#00a650;
 color:white;
-padding:10px 15px;
-border-radius:6px;
+padding:8px 12px;
+border-radius:5px;
 text-decoration:none;
 margin-top:10px;
 }
 
-.admin{
-background:white;
-padding:20px;
-margin-bottom:20px;
-border-radius:10px;
+@media(max-width:900px){
+
+.grid{
+grid-template-columns:repeat(2,1fr);
 }
 
-input{
-width:100%;
-padding:10px;
-margin:5px 0;
-}
-
-button{
-background:#ffc400;
-padding:10px;
-border:none;
-cursor:pointer;
-font-weight:bold;
 }
 
 </style>
@@ -105,8 +124,12 @@ font-weight:bold;
 📡 RADAR DE OFERTAS
 </header>
 
-<div class="banner">
-🔥 Ofertas do Dia no Mercado Livre
+<div class="menu">
+<a href="#">Eletrônicos</a>
+<a href="#">Games</a>
+<a href="#">Casa</a>
+<a href="#">Beleza</a>
+<a href="#">Suplementos</a>
 </div>
 
 <div class="container">
@@ -121,72 +144,74 @@ font-weight:bold;
 
 <input id="foto" placeholder="Link da imagem">
 
-<input id="link" placeholder="Link do Mercado Livre">
+<input id="link" placeholder="Link Mercado Livre">
 
-<button onclick="adicionarProduto()">Adicionar Produto</button>
+<button onclick="addProduto()">Adicionar</button>
 
 </div>
 
-<div class="grid" id="produtos"></div>
+<div class="grid" id="grid"></div>
 
 </div>
 
 <script>
 
-let produtos=JSON.parse(localStorage.getItem("produtos"))||[]
+let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
 
 function salvar(){
 
-localStorage.setItem("produtos",JSON.stringify(produtos))
+localStorage.setItem("produtos", JSON.stringify(produtos));
 
 }
 
-function adicionarProduto(){
+function addProduto(){
 
-let nome=document.getElementById("nome").value
+let nome=document.getElementById("nome").value;
+let preco=document.getElementById("preco").value;
+let foto=document.getElementById("foto").value;
+let link=document.getElementById("link").value;
 
-let preco=document.getElementById("preco").value
+produtos.push({nome,preco,foto,link});
 
-let foto=document.getElementById("foto").value
+salvar();
 
-let link=document.getElementById("link").value
+document.getElementById("nome").value="";
+document.getElementById("preco").value="";
+document.getElementById("foto").value="";
+document.getElementById("link").value="";
 
-produtos.push({nome,preco,foto,link})
-
-salvar()
-
-mostrar()
+mostrar();
 
 }
 
 function mostrar(){
 
-let grid=document.getElementById("produtos")
+let grid=document.getElementById("grid");
 
-grid.innerHTML=""
+grid.innerHTML="";
 
 produtos.forEach(function(p){
 
-let card=document.createElement("div")
+let card=document.createElement("div");
 
-card.className="card"
+card.className="card";
 
 card.innerHTML=
-
 '<img src="'+p.foto+'">'+
-'<h4>'+p.nome+'</h4>'+
+'<div class="nome">'+p.nome+'</div>'+
 '<div class="preco">'+p.preco+'</div>'+
-'<a class="botao" href="'+p.link+'" target="_blank">Comprar</a>'
+'<a class="botao" href="'+p.link+'" target="_blank">Comprar</a>';
 
-grid.appendChild(card)
+grid.appendChild(card);
 
-})
+});
 
 }
 
-mostrar()
+mostrar();
 
 </script>
 
 </body>
+
 </html>
